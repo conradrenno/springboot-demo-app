@@ -12,6 +12,7 @@ import com.devrenno.springdemo.entities.Category;
 import com.devrenno.springdemo.entities.Order;
 import com.devrenno.springdemo.entities.OrderItem;
 import com.devrenno.springdemo.entities.OrderStatus;
+import com.devrenno.springdemo.entities.Payment;
 import com.devrenno.springdemo.entities.Product;
 import com.devrenno.springdemo.entities.User;
 import com.devrenno.springdemo.repositories.CategoryRepository;
@@ -88,6 +89,11 @@ public class TestConfig implements CommandLineRunner{
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		
+		Payment payment = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"),o1 );
+		o1.setPayment(payment);
+		
+		orderRepository.save(o1);
 	}
 	
 	
